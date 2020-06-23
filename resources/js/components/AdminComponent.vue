@@ -293,6 +293,9 @@
          })
          .catch(err=>console.log(err));
         } else {
+            if(this.editedItem.book_name === "" || this.editedItem.book_description === "" || this.editedItem.book_author === ""){
+               this.setSnackBar("please Fill These Field");
+            }else{
            axios.post('/api/book',this.editedItem,options)
            .then((res)=>{
                 if(res.data.status){
@@ -304,6 +307,7 @@
               }
            })
            .catch(err=>console.log(err));
+            }
         }
         this.close()
       },
